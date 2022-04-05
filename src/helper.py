@@ -1,8 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Dense, Dropout, Flatten, Activation, Input
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from tensorflow.keras.layers import Dense, Dropout, Flatten, Activation, Input, BatchNormalization, Add
 from tensorflow.keras.optimizers import Adam, SGD
 import matplotlib.pyplot as plt
 
