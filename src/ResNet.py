@@ -12,9 +12,9 @@ class IdBlock(Layer):
         super(IdBlock, self).__init__()
         fn1, fn2, fn3 = filter_num
         
-        self.conv1 = Conv2D(fn1, (1, 1), padding='same')
+        self.conv1 = Conv2D(fn1, (1, 1), padding='valid')
         self.conv2 = Conv2D(fn2, (3, 3), padding='same')
-        self.conv3 = Conv2D(fn3, (1, 1), padding='same')
+        self.conv3 = Conv2D(fn3, (1, 1), padding='valid')
     
     def call(self, inputs):
         '''forward propagation'''
@@ -48,10 +48,10 @@ class ConvBlock(Layer):
         super(ConvBlock, self).__init__()
         self.fn1, self.fn2, self.fn3 = filter_num
         
-        self.conv1 = Conv2D(self.fn1, (1, 1), strides=(s, s), padding='same')
+        self.conv1 = Conv2D(self.fn1, (1, 1), strides=(s, s), padding='valid')
         self.conv2 = Conv2D(self.fn2, (3, 3), padding='same')
-        self.conv3 = Conv2D(self.fn3, (1, 1), padding='same')
-        self.conv_shortcut = Conv2D(self.fn3, (1, 1), strides=(s, s), padding='same')
+        self.conv3 = Conv2D(self.fn3, (1, 1), padding='valid')
+        self.conv_shortcut = Conv2D(self.fn3, (1, 1), strides=(s, s), padding='valid')
     
     def call(self, inputs):
         '''forward propagation'''
