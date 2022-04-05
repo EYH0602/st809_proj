@@ -38,9 +38,9 @@ def getModel(input_shape):
 def getDatasetLength(dataset):
     return dataset.cardinality().numpy()
 
-def getData(batch_size, val_split):
+def getData(batch_size, val_split, path='data/'):
     train = keras.utils.image_dataset_from_directory(
-        directory='data/train/',
+        directory=path+'train/',
         labels='inferred',
         label_mode='categorical',
         batch_size=batch_size,
@@ -48,7 +48,7 @@ def getData(batch_size, val_split):
     )
 
     test = keras.utils.image_dataset_from_directory(
-        directory='data/test/',
+        directory=path+'test/',
         labels='inferred',
         label_mode='categorical',
         batch_size=batch_size,
