@@ -1,7 +1,10 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Dense, Dropout, Flatten, Activation, Input, BatchNormalization, Add
+from tensorflow.keras.layers import\
+    Layer, Activation, Input, Add, BatchNormalization, Dropout, Dense
+from tensorflow.keras.layers import\
+    Conv2D, ZeroPadding2D, MaxPooling2D, AveragePooling2D, Flatten
 from tensorflow.keras.optimizers import Adam, SGD
 import matplotlib.pyplot as plt
 
@@ -46,6 +49,7 @@ def getData(batch_size, val_split, path='data/'):
         batch_size=batch_size,
         image_size=(48, 48)
     )
+    train = train.map(lambda X, y: (X / 255, y))
 
     test = keras.utils.image_dataset_from_directory(
         directory=path+'test/',
@@ -54,6 +58,7 @@ def getData(batch_size, val_split, path='data/'):
         batch_size=batch_size,
         image_size=(48, 48)
     )
+    test = test.map(lambda X, y: (X / 255, y))
     
     total_size = train.cardinality().numpy()
     train_size = int((1 - val_split) * total_size)
