@@ -83,3 +83,17 @@ The idea of a poster is to be as crisp and clean as possible. So do not overload
 To get an idea on what posters should look like please check this [link](https://www.hsph.harvard.edu/public-health-practice-resources/for-students/resources-for-practicum/communicating-your-practice-experience/student-posters/poster-examples/)
 
 [Poster_template.docx](https://static.us.edusercontent.com/files/gGxTnxr0n61qcBIp8T1JXAzR)
+
+## ResNet
+
+We used a transfer learning technic that utilize the pre-trained weights of ResNet50 with image net.
+
+
+
+**Why Residules work?** Recall chain rule when taking derivatives:
+$$
+\frac{\part f(g(x))}{\part x} = \frac{\part f(g(x))}{\part (g(x))} \frac{\part g(x)}{\part x} \\
+\big\Downarrow \\
+\frac{\part [f(g(x)) + g(x)]}{\part x} = \frac{\part f(g(x))}{\part (g(x))} \frac{\part g(x)}{\part x} + \frac{\part g(x)}{\part x}
+$$
+In the second equation, no matter how small the first part gets, we still have the second part to keep the gradient.s
